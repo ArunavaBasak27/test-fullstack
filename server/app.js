@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-dotenv.config();
+dotenv.config({ path: "../.env" });
 
 app.use(
 	express.static(path.join(__dirname, "../client/dist"), {
