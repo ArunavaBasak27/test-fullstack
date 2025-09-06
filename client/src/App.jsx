@@ -4,24 +4,22 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import { useEffect } from "react";
 import { testApi } from "./api/testApi";
+import { Route, Routes } from "react-router";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Header from "./components/Header";
 
 function App() {
 	const [count, setCount] = useState(0);
-	const [message, setMessage] = useState("");
-	async function fetchData() {
-		try {
-			const response = await testApi();
-			setMessage(response.message);
-		} catch (error) {
-			console.log(error.message);
-		}
-	}
-	useEffect(() => {
-		fetchData();
-	}, []);
+
 	return (
 		<div>
-			<h2>Hello {message}</h2>
+			<Header />
+
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/about" element={<About />} />
+			</Routes>
 		</div>
 	);
 }
